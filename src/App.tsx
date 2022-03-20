@@ -1,14 +1,24 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes, useParams } from 'react-router-dom';
+import { Name } from './Name';
+
+
+type NameProps = {
+    id: string;
+}
 
 function App() {
+  const {id} = useParams();
+
   return (
-    <div className="App">
+      <Routes>
+          <Route path="/" element={<div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Write <code>/name/YOURNAME</code> and get Hi!
         </p>
         <a
           className="App-link"
@@ -19,8 +29,12 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </div>} />
+        <Route path="/name/:id" element={<Name />}/>
+      </Routes>
+    
   );
 }
 
 export default App;
+
